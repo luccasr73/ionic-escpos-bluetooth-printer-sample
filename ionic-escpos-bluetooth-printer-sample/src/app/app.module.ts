@@ -1,13 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { BrowserModule } from '@angular/platform-browser';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
-import { MyApp } from './app.component';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HomePage } from '../pages/home/home';
-import { BtPrinterProvider } from '../providers/bt-printer/bt-printer';
-import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { PrinterProvider } from './../providers/printer/printer';
+import { MyApp } from './app.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,7 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BluetoothSerial,
-    BtPrinterProvider
+    PrinterProvider
   ]
 })
 export class AppModule {}
