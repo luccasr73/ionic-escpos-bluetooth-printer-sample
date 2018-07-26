@@ -8,8 +8,7 @@ import { commands } from './../../providers/printer/printer-commands';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  arrDevices: any = [];
-  commands: any;
+
   constructor(public navCtrl: NavController, private print: PrinterProvider, private alertCtrl: AlertController, private loadCtrl: LoadingController, private toastCtrl: ToastController) {}
 
   showToast(data) {
