@@ -6,7 +6,7 @@ Sample use of ionic 3 with a bluetooth esc/pos thermal printer using the plugin 
 
 1. Install ionic 3.x
 1. Fork this repo
-1. Using command line, go to folder where the repo is located 
+1. Using command line, go to folder where the repo is located and run `npm install` to install dependencies
 1. Inside the folder of repo, execute any of following commands: `ionic cordova run --l --c` for livereload with console logs  or `ionic cordova build [platform] --debug` to compile and build app
 1. Test on your thermal printer
 ## Tested devices
