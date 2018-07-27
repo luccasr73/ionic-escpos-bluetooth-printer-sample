@@ -18,7 +18,7 @@ export class PrinterProvider {
     return this.bluetoothSerial.connect(address);
   }
 
-  printBluetooth(data){
+  printData(data){
     return this.bluetoothSerial.write(data);
   }
 
