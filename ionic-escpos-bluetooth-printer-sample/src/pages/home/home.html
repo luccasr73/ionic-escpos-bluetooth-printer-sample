@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
       Bluetooth printer sample
     </ion-title>
@@ -7,5 +7,16 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button full (click)="prepareToPrint()">Test print</button>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" floating>Title</ion-label>
+      <ion-input [(ngModel)]='inputData.title'></ion-input> 
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Text</ion-label>
+      <ion-input [(ngModel)]='inputData.text'></ion-input> 
+    </ion-item>
+    <div hidden></div>
+  </ion-list>
+  <button ion-button full (click)="prepareToPrint(inputData)">Test print</button>
 </ion-content>
