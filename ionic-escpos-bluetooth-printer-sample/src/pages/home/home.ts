@@ -8,10 +8,10 @@ import { commands } from './../../providers/printer/printer-commands';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  inputData:any = {};
+  constructor(public navCtrl: NavController, private printer: PrinterProvider, private alertCtrl: AlertController, private loadCtrl: LoadingController, private toastCtrl: ToastController) {}
 
-  constructor(public navCtrl: NavController, private print: PrinterProvider, private alertCtrl: AlertController, private loadCtrl: LoadingController, private toastCtrl: ToastController) {}
-
-  showToast(data) {
+  showToast(data) { 
     let toast = this.toastCtrl.create({
       duration: 3000,
       message: data,
@@ -93,16 +93,16 @@ export class HomePage {
     }));
   }
 
-  printData(device, data) {
+  print(device, data) {
     console.log('Device mac: ', device);
     console.log('Data: ', data);
     let load = this.loadCtrl.create({
       content: 'Printing...'
-    });
+    }); 
     load.present();
-    this.print.connectBluetooth(device).subscribe(status => {
+    this.printer.connectBluetooth(device).subscribe(status => {
         console.log(status);
-        this.print.printBluetooth(this.noSpecialChars(data))
+        this.printer.printData(this.noSpecialChars(data))
           .then(printStatus => {
             console.log(printStatus);
             let alert = this.alertCtrl.create({
@@ -111,7 +111,7 @@ export class HomePage {
             });
             load.dismiss();
             alert.present();
-            this.print.disconnectBluetooth();
+            this.printer.disconnectBluetooth();
           })
           .catch(error => {
             console.log(error);
@@ -121,7 +121,7 @@ export class HomePage {
             });
             load.dismiss();
             alert.present();
-            this.print.disconnectBluetooth();
+            this.printer.disconnectBluetooth();
           });
       },
       error => {
@@ -135,18 +135,28 @@ export class HomePage {
       });
   }
 
-  prepareToPrint() {
+  prepareToPrint(data) {
+    // u can remove this when generate the receipt using another method
+    if(!data.title){
+      data.title = 'Title';
+    }
+    if(!data.text){
+      data.text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tellus sapien, aliquam id mattis et, pretium eu libero. In dictum mauris vel lorem porttitor, et tempor neque semper. Aliquam erat volutpat. Aliquam vel malesuada urna, a pulvinar augue. Nunc ac fermentum massa. Proin efficitur purus fermentum tellus fringilla, fringilla aliquam nunc dignissim. Duis et luctus tellus, sed ullamcorper lectus.';
+    }
+
     let receipt = '';
     receipt += commands.HARDWARE.HW_INIT;
     receipt += commands.TEXT_FORMAT.TXT_4SQUARE;
     receipt += commands.TEXT_FORMAT.TXT_ALIGN_CT;
-    receipt += 'TITLE';
+    receipt += data.title.toUpperCase();
     receipt += commands.EOL;
     receipt += commands.TEXT_FORMAT.TXT_NORMAL;
-    receipt += commands.HORIZONTAL_LINE.HR_48MM;
+    receipt += commands.HORIZONTAL_LINE.HR_58MM;
+    receipt += commands.EOL;
+    receipt += commands.HORIZONTAL_LINE.HR2_58MM;
     receipt += commands.EOL;
     receipt += commands.TEXT_FORMAT.TXT_ALIGN_LT;
-    receipt += 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tellus sapien, aliquam id mattis et, pretium eu libero. In dictum mauris vel lorem porttitor, et tempor neque semper. Aliquam erat volutpat. Aliquam vel malesuada urna, a pulvinar augue. Nunc ac fermentum massa. Proin efficitur purus fermentum tellus fringilla, fringilla aliquam nunc dignissim. Duis et luctus tellus, sed ullamcorper lectus.';
+    receipt += data.text;
     //secure space on footer
     receipt += commands.EOL;
     receipt += commands.EOL;
@@ -163,17 +173,17 @@ export class HomePage {
           handler: (device) => {
             if(!device){
               this.showToast('Select a printer!');
-              return ;
+              return false;
             }
             console.log(device);
-            this.printData(device, receipt);
+            this.print(device, receipt);
           }
         }
       ]
     });
 
-    this.print.enableBluetooth().then(() => {
-      this.print.searchBluetooth().then(devices => {
+    this.printer.enableBluetooth().then(() => {
+      this.printer.searchBluetooth().then(devices => {
         devices.forEach((device) => {
           console.log('Devices: ', JSON.stringify(device));
           alert.addInput({
