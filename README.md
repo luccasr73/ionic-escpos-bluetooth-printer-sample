@@ -2,6 +2,9 @@
 Sample use of ionic 3 with a bluetooth esc/pos thermal printer using the plugin [Bluetooth Serial](https://ionicframework.com/docs/native/bluetooth-serial)
 
 **Only tested on android devices**
+
+[Image of receipt](/receipt.jpg)
+
 ## How to use
 
 1. Install ionic 3.x
