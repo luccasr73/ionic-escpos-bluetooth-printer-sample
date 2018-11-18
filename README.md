@@ -1,4 +1,7 @@
 # ionic-escpos-bluetooth-printer-sample
+
+[![HitCount](http://hits.dwyl.io/luccasr73/luccasr73/ionic-escpos-bluetooth-printer-sample.svg)](http://hits.dwyl.io/luccasr73/luccasr73/ionic-escpos-bluetooth-printer-sample)
+
 Sample use of ionic 3 with a bluetooth esc/pos thermal printer using the plugin [Bluetooth Serial](https://ionicframework.com/docs/native/bluetooth-serial)
 
 **Only tested on android devices**
