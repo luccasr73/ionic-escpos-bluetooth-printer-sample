@@ -20,6 +20,8 @@ Sample use of ionic 3 with a bluetooth esc/pos thermal printer using the plugin 
 
 * Print Images
 * Print HTML
+* Print QR/BARCODE
+* Print Chinese Characters
 
 ## Tested devices
 * zjiang 5802(58mm)
