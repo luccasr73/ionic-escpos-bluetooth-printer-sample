@@ -6,7 +6,7 @@ Sample use of ionic 3 with a bluetooth esc/pos thermal printer using the plugin 
 
 **Only tested on android devices**
 
-[Image of receipt](/receipt.jpeg)
+![Image of receipt](/receipt.jpeg)
 
 ## How to use
 
