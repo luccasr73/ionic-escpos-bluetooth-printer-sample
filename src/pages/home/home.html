@@ -10,13 +10,13 @@
   <ion-list>
     <ion-item>
       <ion-label color="primary" floating>Title</ion-label>
-      <ion-input [(ngModel)]='inputData.title'></ion-input>
+      <ion-input [(ngModel)]='form.title'></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" floating>Text</ion-label>
-      <ion-input [(ngModel)]='inputData.text'></ion-input>
+      <ion-input [(ngModel)]='form.text'></ion-input>
     </ion-item>
     <div hidden></div>
   </ion-list>
-  <button ion-button full (click)="prepareToPrint(inputData)">Test print</button>
+  <button ion-button full (click)="print(form)">Test print</button>
 </ion-content>
