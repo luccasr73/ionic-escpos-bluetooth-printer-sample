@@ -2,7 +2,7 @@
 <widget id="com.luccasr.printerbt.sample" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>BT print sample</name>
     <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <author email="luccasrobert@hotmail.com" href="https://github.com/luccasr73">Luccas Robert</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -82,8 +82,6 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.2.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-bluetooth-serial" spec="^0.4.7" />
-    <allow-navigation href="http://192.168.15.3:8100" />
-    <allow-navigation href="http://192.168.15.7:8100" />
     <engine name="android" spec="~7.0.0" />
-    <allow-navigation href="http://192.168.0.104:8100" />
+    <allow-navigation href="http://localhost:8100" />
 </widget>
